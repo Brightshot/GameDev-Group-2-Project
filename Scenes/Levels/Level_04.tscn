@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://djpsm0x7eald"]
 
 [ext_resource type="PackedScene" uid="uid://cyti38f0lagf2" path="res://Scenes/Prefabs/LevelFinishDoor.tscn" id="1_ygd1j"]
-[ext_resource type="PackedScene" uid="uid://u4203vwefquu" path="res://Scenes/Levels/The_End.tscn" id="2_k7er7"]
+[ext_resource type="PackedScene" uid="uid://ctvhcts520su5" path="res://Scenes/Levels/The_End.tscn" id="2_cg5dh"]
 [ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="3_fmeed"]
 [ext_resource type="PackedScene" uid="uid://bfmh3fm2de78o" path="res://Scenes/Prefabs/Coin.tscn" id="4_6egx1"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_1hh7e"]
@@ -74,7 +74,7 @@ sources/0 = SubResource("TileSetAtlasSource_rndpx")
 [node name="LevelFinishDoor" parent="." instance=ExtResource("1_ygd1j")]
 z_index = 1
 position = Vector2(49, -138)
-next_scene = ExtResource("2_k7er7")
+next_scene = ExtResource("2_cg5dh")
 
 [node name="Player" parent="." instance=ExtResource("3_fmeed")]
 z_index = 1
