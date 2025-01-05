@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://w7m6tehvvy3g"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
+[ext_resource type="Texture2D" uid="uid://cyesjxii0yhyl" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_side.png" id="2_mylll"]
+[ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_8vxmb"]
+[ext_resource type="Texture2D" uid="uid://77t0ci7fsr6k" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_fall.png" id="3_ky5tm"]
+[ext_resource type="Texture2D" uid="uid://c5b6tc80wr2d2" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk0.png" id="4_1ryxe"]
+[ext_resource type="Texture2D" uid="uid://b5umpi3xb5kme" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk1.png" id="5_4rovn"]
+[ext_resource type="Texture2D" uid="uid://cvlewxj31v8pm" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk2.png" id="6_2mx8p"]
+[ext_resource type="Texture2D" uid="uid://tvntkyo8jvuj" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk3.png" id="7_07oil"]
+[ext_resource type="Texture2D" uid="uid://qrqdn2muajh6" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk4.png" id="8_603ly"]
+[ext_resource type="Texture2D" uid="uid://eein8j8hcdyx" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk5.png" id="9_y8h4s"]
+[ext_resource type="Texture2D" uid="uid://b4hll1qoyjrsf" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk6.png" id="10_5r2dc"]
+[ext_resource type="Texture2D" uid="uid://fhi3i6wbaeu0" path="res://Assets/Spritesheet/Male adventurer/PNG/Poses/character_maleAdventurer_walk7.png" id="11_sf055"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nss6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mylll")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ky5tm")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1ryxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4rovn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2mx8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_07oil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_603ly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y8h4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5r2dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sf055")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4sts"]
+radius = 27.0
+height = 66.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvbjh"]
+size = Vector2(57, 74)
+
+[sub_resource type="Curve" id="Curve_m2jh0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246032, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_3gc37"]
+offsets = PackedFloat32Array(0.25, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_qt7d6")
+jump_force = 800.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.76, 0.76)
+sprite_frames = SubResource("SpriteFrames_4nss6")
+animation = &"Walk"
+frame_progress = 0.812082
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_n4sts")
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0.5, 12)
+shape = SubResource("RectangleShape2D_tvbjh")
+
+[node name="ParticleTrails" type="CPUParticles2D" parent="."]
+position = Vector2(0, 42)
+emitting = false
+amount = 20
+lifetime = 0.4
+speed_scale = 0.8
+texture = ExtResource("3_8vxmb")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_m2jh0")
+color_ramp = SubResource("Gradient_3gc37")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 15)
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_sphere_radius = 50.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 15.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_m2jh0")
+color_ramp = SubResource("Gradient_3gc37")
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
