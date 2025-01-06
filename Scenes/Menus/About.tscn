@@ -94,8 +94,8 @@ theme_override_constants/separation = 21
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
-theme_override_font_sizes/normal_font_size = 48
-text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+theme_override_font_sizes/normal_font_size = 73
+text = "This game was created by Fazaz soliu,Olayiwola mubarak and Chiebuka Ezenwa for the ICT 323 Python project"
 fit_content = true
 
 [node name="Back" type="Button" parent="Main/VBoxContainer"]
