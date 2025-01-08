@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bssjjygu83iwl"]
+
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_hp1cr"]
+[ext_resource type="AudioStream" uid="uid://bq7qvxybfxdey" path="res://audio/background_music.ogg/y2mate.com - Start Menu.mp3" id="2_of4gb"]
+[ext_resource type="AudioStream" uid="uid://d3ldv4818s140" path="res://Assets/Sound/FX/30_Jump_03.wav" id="3_vofls"]
+[ext_resource type="AudioStream" uid="uid://d1ap3kegbjiwu" path="res://Assets/Sound/FX/y2mate.com - Mario Coin Sound  Sound Effect HD.mp3" id="4_b1iay"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_hp1cr")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_of4gb")
+autoplay = true
+parameters/looping = true
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vofls")
+volume_db = -3.759
+
+[node name="CoinPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b1iay")
+volume_db = -15.036
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="RespawnSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="LevelCompleteSfx" type="AudioStreamPlayer" parent="."]
